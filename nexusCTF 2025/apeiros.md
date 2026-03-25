@@ -5,7 +5,7 @@
 ### Challenge Description
 >My Grecian girlfriend sent me a C file. She knows I love this stuff. But the file seems broken... or is it?
 ### Files
-[apeiros](https://github.com/QwertzG/CTF-archive/blob/afa35fcabb47f56cf8623ce290a2ea6fddee2b3d/nexusCTF%202025/files/apeiros.c)
+[apeiros](https://github.com/shouryadixitisverycool/CTF-writeups/blob/main/nexusCTF%202025/files/apeiros.c)
 ## My Solution
 When you open the file, you'll realise all the code is obfuscated by defining each individual component separately as shown
 ```c
