@@ -28,15 +28,15 @@ jobs:
           tar -xzf /tmp/hugo.tar.gz -C /tmp
           echo "/tmp" >> "$GITHUB_PATH"
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
 
       - name: Configure Pages
         id: pages
