@@ -1,11 +1,21 @@
+---
+title: "Blank"
+date: 2026-05-31
+draft: false
+tags: ["reverse", "ghidra", "strace"]
+categories: ["nexusCTF 2025"]
+description: "Reverse engineering writeup for blank."
+---
+
 ## Challenge Overview
-**Category:** Reverse  
-**Difficulty:** Easy  
-**Tools Used:** Ghidra  
+- **Category:** <a class="hx:inline-block hx:align-middle hx:no-underline hover:hx:no-underline" href="../../tags/reverse/"><span class="hextra-badge"><span class="hx:inline-flex hx:gap-1 hx:items-center hx:rounded-full hx:px-2.5 hx:leading-6 hx:text-[.65rem] hx:border hx:border-indigo-200 hx:bg-indigo-100 hx:text-indigo-900 hx:dark:border-indigo-200/30 hx:dark:bg-indigo-900/30 hx:dark:text-indigo-200">Reverse</span></span></a>
+- **Difficulty:** Easy
+- **Tools Used:** Ghidra
+
 ### Challenge Description
 >Why should we trust the kernel mode Syscalls to handle the errors ?
 ### Files
-[blank](https://github.com/QwertzG/CTF-archive/blob/86bf36b72a474049507132b3a14a71aa62eb8326/nexusCTF%202025/files/blank)
+[blank](/resources/nexusCTF%202025/blank)
 ## My Solution
 Decompiling the file using Ghidra, we see this
 ```c
@@ -85,6 +95,6 @@ write(8, "OK", 2)                       = -1 EBADF (Bad file descriptor)
 ```
 
 Ignoring the `OK`, we have our flag
-```perl
+```text
 nexus{th3_fl4g_w1ll_r3ve4l_1ts3lf_wh3n_y0u_st0p_look1ng}
 ```

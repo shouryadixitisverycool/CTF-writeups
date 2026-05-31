@@ -1,11 +1,21 @@
+---
+title: "Apeiros"
+date: 2026-05-31
+draft: false
+tags: ["reverse", "ghidra", "python"]
+categories: ["nexusCTF 2025"]
+description: "Reverse engineering writeup for apeiros."
+---
+
 ## Challenge Overview
-**Category:** Reverse  
-**Difficulty:** Easy-Mid  
-**Tools Used:** Ghidra, python  
+- **Category:** <a class="hx:inline-block hx:align-middle hx:no-underline hover:hx:no-underline" href="../../tags/reverse/"><span class="hextra-badge"><span class="hx:inline-flex hx:gap-1 hx:items-center hx:rounded-full hx:px-2.5 hx:leading-6 hx:text-[.65rem] hx:border hx:border-indigo-200 hx:bg-indigo-100 hx:text-indigo-900 hx:dark:border-indigo-200/30 hx:dark:bg-indigo-900/30 hx:dark:text-indigo-200">Reverse</span></span></a>
+- **Difficulty:** Easy
+- **Tools Used:** Ghidra, python
+
 ### Challenge Description
 >My Grecian girlfriend sent me a C file. She knows I love this stuff. But the file seems broken... or is it?
 ### Files
-[apeiros](https://github.com/QwertzG/CTF-archive/blob/afa35fcabb47f56cf8623ce290a2ea6fddee2b3d/nexusCTF%202025/files/apeiros.c)
+[apeiros](/resources/nexusCTF%202025/apeiros.c)
 ## My Solution
 When you open the file, you'll realise all the code is obfuscated by defining each individual component separately as shown
 ```c
@@ -198,6 +208,6 @@ The state cycle goes as follows: 1337 $\to$ 404 $\to$ 90210 $\to$ 8008 $\to$ 555
 8008 $\to$ `4r3_und3r`  
 555$\to$ `3st1m4t3d}`  
 ### Final flag
-```perl
+```text
 nexus{pr3pr0c3ss0r_4r3_und3r3st1m4t3d}
 ```

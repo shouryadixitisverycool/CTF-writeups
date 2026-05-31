@@ -1,22 +1,32 @@
+---
+title: "HuntMe3"
+date: 2026-05-31
+draft: false
+tags: ["reverse", "ghidra", "python"]
+categories: ["nexusCTF 2025"]
+description: "Reverse engineering writeup for HuntMe3."
+---
+
 ## Challenge Overview
-**Category:** Reverse  
-**Difficulty:** Medium  
-**Tools Used:** Ghidra, python  
+- **Category:** <a class="hx:inline-block hx:align-middle hx:no-underline hover:hx:no-underline" href="../../tags/reverse/"><span class="hextra-badge"><span class="hx:inline-flex hx:gap-1 hx:items-center hx:rounded-full hx:px-2.5 hx:leading-6 hx:text-[.65rem] hx:border hx:border-indigo-200 hx:bg-indigo-100 hx:text-indigo-900 hx:dark:border-indigo-200/30 hx:dark:bg-indigo-900/30 hx:dark:text-indigo-200">Reverse</span></span></a>
+- **Difficulty:** Medium
+- **Tools Used:** Ghidra, python
+
 ### Challenge Description
 > The forest is no longer just watched. 
 > Now, every step you take is measured.  
 > Every wrong move is quietly absorbed by the trees.  
 > Only those who truly understand the pattern may pass.
 ### Files
-[HuntMe3](https://github.com/QwertzG/CTF-archive/blob/ba00c18da28d443a8cb5454da250b89c0798db5c/nexusCTF%202025/files/HuntMe3)
+- [HuntMe3](/resources/nexusCTF%202025/HuntMe3)
 ## My Solution
 Opening the file in Ghidra we see a lot of encryption functions, but some of these are red herrings.
 ```c
-undefined8 main(void)
+int main(void)
 {  
 	int enc3input;  
 	char *pointerToInput;  
-	undefined8 uVar1;  
+	int flag;  
 	char input [264];  
 	char *i;
 	
@@ -40,7 +50,7 @@ undefined8 main(void)
 	if (pointerToInput == (char *)0)
 	{  
 		puts(&DAT_00402360);  
-		uVar1 = 1;  
+		flag = 1;  
 	}  
 	else
 	{  
@@ -77,19 +87,19 @@ undefined8 main(void)
 			puts(" CONGRATULATIONS, MASTER HUNTER ");  
 			puts("");  
 		}  
-		uVar1 = 0;  
+		flag = 0;  
 	}  
-	return uVar1;  
+	return flag;  
 }
 ```
 The code takes our input and puts it through `enc3()` which if it returns `non-zero`, then we have our answer.  
 Looking inside `enc3()`
 ```c
-undefined8 enc3(char *funcInput)
+int enc3(char *funcInput)
 {  
 	byte bVar1;  
 	size_t strlength;  
-	undefined8 uVar2;  
+	int uVar2;  
 	int i;
 	
 	strlength = strlen(funcInput);  
@@ -125,7 +135,7 @@ Looking at `enc4()`
 ```c
 uint enc4(int x)
 {  
-	uint uVar1;  
+	uint flag;  
 	undefined4 i;  
 	undefined4 c;  
 	undefined4 b;  
@@ -140,9 +150,9 @@ uint enc4(int x)
 		b = b + i * i;  
 		c = enc5(c,i & 7);  
 	}  
-	uVar1 = a ^ b ^ c >> ((byte)x & 7);  
-	uVar1 = uVar1 & 255 ^ (uVar1 & 31) << 3;  
-	return uVar1 ^ uVar1 >> 5;  
+	flag = a ^ b ^ c >> ((byte)x & 7);  
+	flag = flag & 255 ^ (flag & 31) << 3;  
+	return flag ^ flag >> 5;  
 }
 
 uint enc5(uint a,byte b)
@@ -186,9 +196,9 @@ def verify_solution():
             local_10 = (local_10 + (i * i)) & 0xFFFFFFFF
             local_14 = enc5(local_14, i & 7)
         
-        uVar1 = local_c ^ local_10 ^ (local_14 >> (x & 7))
-        uVar1 = (uVar1 & 255) ^ ((uVar1 & 31) << 3)
-        result = uVar1 ^ (uVar1 >> 5)
+        flag = local_c ^ local_10 ^ (local_14 >> (x & 7))
+        flag = (flag & 255) ^ ((flag & 31) << 3)
+        result = flag ^ (flag >> 5)
         return result & 0xFF
     
     # Decrypt the flag
@@ -210,6 +220,6 @@ if __name__ == "__main__":
 
 ```
 ### Final flag
-```perl
+```text
 nexus{thr33_hunt5_c0mpl3t3_th3_f0r3st_gr4nts_p4ss4g3}
 ```
