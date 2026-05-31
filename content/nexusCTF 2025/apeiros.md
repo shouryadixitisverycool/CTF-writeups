@@ -15,7 +15,7 @@ description: "Reverse engineering writeup for apeiros."
 ### Challenge Description
 >My Grecian girlfriend sent me a C file. She knows I love this stuff. But the file seems broken... or is it?
 ### Files
-[apeiros](/resources/nexusCTF%202025/apeiros.c)
+[apeiros](https://github.com/shouryadixitisverycool/CTF-writeups/blob/main/resources/nexusCTF%202025/apeiros.c)
 ## My Solution
 When you open the file, you'll realise all the code is obfuscated by defining each individual component separately as shown
 ```c

@@ -18,7 +18,7 @@ description: "Reverse engineering writeup for HuntMe3."
 > Every wrong move is quietly absorbed by the trees.  
 > Only those who truly understand the pattern may pass.
 ### Files
-- [HuntMe3](/resources/nexusCTF%202025/HuntMe3)
+- [HuntMe3](https://github.com/shouryadixitisverycool/CTF-writeups/blob/main/resources/nexusCTF%202025/HuntMe3)
 ## My Solution
 Opening the file in Ghidra we see a lot of encryption functions, but some of these are red herrings.
 ```c

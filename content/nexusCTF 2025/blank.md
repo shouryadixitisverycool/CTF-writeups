@@ -15,7 +15,7 @@ description: "Reverse engineering writeup for blank."
 ### Challenge Description
 >Why should we trust the kernel mode Syscalls to handle the errors ?
 ### Files
-[blank](/resources/nexusCTF%202025/blank)
+[blank](https://github.com/shouryadixitisverycool/CTF-writeups/blob/main/resources/nexusCTF%202025/blank)
 ## My Solution
 Decompiling the file using Ghidra, we see this
 ```c
